@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DreamPop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="DreamPop home">
+          <span class="brand-mark"></span>
+          <span>
+            <strong>DreamPop</strong>
+            <small>Funny dream videos</small>
+          </span>
+        </a>
+        <div class="top-actions">
+          <a class="youtube-link" href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+          <button class="icon-button" type="button" aria-label="Search dreams">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.8-3.8"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="library" aria-label="Dream videos">
+          <div class="hero">
+            <img src="assets/friendly-dream-poster.svg" alt="Colorful friendly dream collage" />
+            <div class="hero-copy">
+              <p>Dream of the day</p>
+              <h1 id="heroTitle">The To-Do List Chase</h1>
+              <span id="heroSubtitle">Fast, funny, friendly interpretations for curious people</span>
+            </div>
+          </div>
+
+          <div class="habit-strip" aria-label="Community activity">
+            <div>
+              <strong>7-day streak</strong>
+              <span>New dream drops keep people checking back</span>
+            </div>
+            <div>
+              <strong>Dream roasts</strong>
+              <span>Gentle jokes, then a useful meaning</span>
+            </div>
+            <div>
+              <strong>Ask the archive</strong>
+              <span>Quick search by symbol, mood, or theme</span>
+            </div>
+          </div>
+
+          <section class="spotlight" aria-label="Rotating dream picks">
+            <div class="section-heading compact">
+              <div>
+                <p>Tonight's picks</p>
+                <h2>Fresh dreams on loop</h2>
+              </div>
+              <div class="spotlight-dots" id="spotlightDots" aria-label="Rotating dream position"></div>
+            </div>
+            <div class="spotlight-track" id="spotlightTrack"></div>
+          </section>
+
+          <div class="section-heading">
+            <div>
+              <p>Browse</p>
+              <h2>Dream videos</h2>
+            </div>
+            <button class="ghost-button" type="button">Newest</button>
+          </div>
+
+          <div class="chips" aria-label="Dream categories">
+            <button class="chip active" type="button">All</button>
+            <button class="chip" type="button">Anxiety</button>
+            <button class="chip" type="button">Symbols</button>
+            <button class="chip" type="button">Recurring</button>
+            <button class="chip" type="button">Lucid</button>
+          </div>
+
+          <div class="video-list" id="videoList"></div>
+
+          <section class="youtube-panel" aria-label="YouTube channel">
+            <div>
+              <p>Watch the full series</p>
+              <h2>YouTube channel</h2>
+              <span>Short dream interpretations, comments, and community requests all point back to the channel.</span>
+            </div>
+            <a class="primary-link" href="https://www.youtube.com/" target="_blank" rel="noreferrer">Open YouTube</a>
+          </section>
+
+          <section class="premium-panel" aria-label="Premium membership">
+            <div class="section-heading compact">
+              <div>
+                <p>Premium plan</p>
+                <h2>DreamPop Plus</h2>
+              </div>
+              <span class="price">$0.99/mo</span>
+            </div>
+            <div class="premium-grid">
+              <div>
+                <strong>Private email interpretation</strong>
+                <span>Members can request a specific dream and receive the interpretation by email.</span>
+              </div>
+              <div>
+                <strong>Early video access</strong>
+                <span>Premium members see new interpretations before public release.</span>
+              </div>
+              <div>
+                <strong>Dream journal vault</strong>
+                <span>Save dreams privately and track recurring symbols over time.</span>
+              </div>
+              <div>
+                <strong>Priority requests</strong>
+                <span>Members vote on which dream gets interpreted next.</span>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <aside class="detail-panel" aria-label="Selected dream details">
+          <article class="video-detail">
+            <div class="player">
+              <img id="detailPoster" src="assets/friendly-dream-poster.svg" alt="" />
+              <button class="play-button" type="button" aria-label="Play selected dream video">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="detail-copy">
+              <div class="meta-row">
+                <span id="detailDate"></span>
+                <span id="detailLength"></span>
+              </div>
+              <h2 id="detailTitle"></h2>
+              <p id="detailDescription"></p>
+              <div class="tag-row" id="detailTags"></div>
+            </div>
+
+            <section class="symbols" aria-label="Dream symbols">
+              <h3>Dream details</h3>
+              <div id="detailSymbols"></div>
+            </section>
+
+            <section class="comments" aria-label="Comments">
+              <div class="comments-head">
+                <h3>Comments</h3>
+                <span id="commentCount"></span>
+              </div>
+              <form class="comment-form" id="commentForm">
+                <label for="commentName">Name</label>
+                <input id="commentName" name="name" autocomplete="name" placeholder="Your name" />
+                <label for="commentText">Comment</label>
+                <textarea id="commentText" name="comment" rows="3" placeholder="Leave your thought on this dream"></textarea>
+                <button class="primary-button" type="submit">Post comment</button>
+              </form>
+              <div class="comment-list" id="commentList"></div>
+            </section>
+          </article>
+        </aside>
+      </main>
+
+      <section class="episode-view" id="episodeView" aria-label="Full dream episode" aria-hidden="true">
+        <div class="episode-shell">
+          <button class="episode-close" id="episodeClose" type="button" aria-label="Close dream episode">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+
+          <div class="episode-player">
+            <img id="episodePoster" src="assets/friendly-dream-poster.svg" alt="" />
+            <button class="episode-play" type="button" aria-label="Play full dream video">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <article class="episode-copy">
+            <div class="meta-row">
+              <span id="episodeDate"></span>
+              <span id="episodeLength"></span>
+              <span>Full video</span>
+            </div>
+            <h2 id="episodeTitle"></h2>
+            <p id="episodeDescription"></p>
+
+            <div class="episode-grid">
+              <div>
+                <h3>What the dream means</h3>
+                <p id="episodeMeaning"></p>
+              </div>
+              <div>
+                <h3>Friendly takeaway</h3>
+                <p id="episodeTakeaway"></p>
+              </div>
+            </div>
+
+            <div class="tag-row" id="episodeTags"></div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
